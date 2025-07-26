@@ -1,11 +1,11 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Particles, { initParticlesEngine } from '@tsparticles/react'
-
 import { loadFull } from 'tsparticles'
+
 export default function ParticleBackground() {
   const [init, setInit] = useState(false)
+
   useEffect(() => {
-    console.log('init')
     initParticlesEngine(async (engine) => {
       await loadFull(engine)
     }).then(() => {
@@ -22,9 +22,19 @@ export default function ParticleBackground() {
           id="tsparticles"
           particlesLoaded={particlesLoaded}
           style={{
-            zIndex: -1
+            zIndex: -1,
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%'
           }}
           options={{
+            background: {
+              color: {
+                value: 'transparent'
+              }
+            },
             fpsLimit: 120,
             interactivity: {
               events: {
@@ -34,59 +44,95 @@ export default function ParticleBackground() {
                 },
                 onHover: {
                   enable: true,
-                  mode: 'repulse'
+                  mode: 'grab'
                 },
                 resize: true
               },
               modes: {
                 push: {
-                  quantity: 4
+                  quantity: 3
                 },
-                repulse: {
-                  distance: 200,
-                  duration: 0.4
+                grab: {
+                  distance: 140,
+                  links: {
+                    blink: false,
+                    consent: false,
+                    opacity: 0.8
+                  }
                 }
               }
             },
             particles: {
               color: {
-                value: '#0b3052'
+                value: ['#3b82f6', '#06b6d4', '#8b5cf6', '#10b981']
               },
               links: {
-                color: '#1864ab',
-                distance: 150,
+                color: '#3b82f6',
+                distance: 120,
                 enable: true,
-                opacity: 0.5,
-                width: 1
+                opacity: 0.3,
+                width: 1,
+                triangles: {
+                  enable: false,
+                  opacity: 0.1
+                }
               },
               move: {
                 direction: 'none',
                 enable: true,
                 outModes: {
-                  default: 'bounce'
+                  default: 'out'
                 },
-                random: false,
-                speed: 1.2,
-                straight: false
+                random: true,
+                speed: 0.8,
+                straight: false,
+                attract: {
+                  enable: false,
+                  rotateX: 600,
+                  rotateY: 1200
+                }
               },
               number: {
                 density: {
                   enable: true,
-                  area: 800
+                  area: 1000
                 },
-                value: 160
+                value: 80
               },
               opacity: {
-                value: 0.5
+                value: { min: 0.1, max: 0.7 },
+                animation: {
+                  enable: true,
+                  speed: 1,
+                  minimumValue: 0.1,
+                  sync: false
+                }
               },
               shape: {
-                type: 'circle'
+                type: ['circle', 'triangle', 'polygon'],
+                polygon: {
+                  sides: 6
+                }
               },
               size: {
-                value: { min: 1, max: 5 }
+                value: { min: 5, max: 12 },
+                animation: {
+                  enable: true,
+                  speed: 2,
+                  minimumValue: 0.5,
+                  sync: false
+                }
+              },
+              twinkle: {
+                particles: {
+                  enable: true,
+                  frequency: 0.05,
+                  opacity: 1
+                }
               }
             },
-            detectRetina: true
+            detectRetina: true,
+            smooth: true
           }}
         />
       )}

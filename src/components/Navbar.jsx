@@ -24,7 +24,7 @@ function Navbar() {
           Liên hệ
         </a>
         <a
-          href="https://github.com/Suzukisakae/portfolio-v2"
+          href="https://github.com/lethanhvinh0604/portfolio-v2"
           className="link"
           target="_blank"
           rel="noopener noreferrer"
@@ -42,15 +42,11 @@ function Navbar() {
 }
 
 const Nav = styled.nav`
-  ${'' /* position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 100; */}
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(8, 73, 120, 0.93);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 
   .nav-brand {
