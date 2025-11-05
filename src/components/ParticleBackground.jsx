@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useState } from 'react'
 import Particles, { initParticlesEngine } from '@tsparticles/react'
+import { useTheme } from '../context/ThemeContext'
 
 import { loadFull } from 'tsparticles'
 export default function ParticleBackground() {
   const [init, setInit] = useState(false)
+  const { theme } = useTheme()
   useEffect(() => {
-    console.log('init')
     initParticlesEngine(async (engine) => {
       await loadFull(engine)
     }).then(() => {
@@ -50,10 +51,10 @@ export default function ParticleBackground() {
             },
             particles: {
               color: {
-                value: '#0b3052'
+                value: theme.particleColor
               },
               links: {
-                color: '#1864ab',
+                color: theme.particleLink,
                 distance: 150,
                 enable: true,
                 opacity: 0.5,

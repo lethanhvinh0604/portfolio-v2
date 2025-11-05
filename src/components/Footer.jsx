@@ -10,9 +10,11 @@ function Footer() {
 
 const FooterWrapper = styled.footer`
   text-align: center;
-  opacity: 0.4;
+  opacity: 0.6;
   font-size: 1.6rem; /* Equivalent to 'sm' in Chakra UI */
   padding: 20px 0;
+  color: ${({ theme }) => theme.textSecondary};
+  transition: color 0.3s ease;
 `
 
 export default Footer

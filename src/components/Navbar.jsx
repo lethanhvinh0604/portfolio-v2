@@ -1,9 +1,13 @@
 import styled from 'styled-components'
-import Logo from '../assets/logoaccountvv.png'
+import Logo from '../assets/haruki.png'
 import { useState } from 'react'
+import { useTheme } from '../context/ThemeContext'
+import Brightness4Icon from '@mui/icons-material/Brightness4'
+import Brightness7Icon from '@mui/icons-material/Brightness7'
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const { isDarkMode, toggleTheme } = useTheme()
 
   return (
     <Nav>
@@ -31,6 +35,9 @@ function Navbar() {
         >
           Source
         </a>
+        <button className="theme-toggle" onClick={toggleTheme}>
+          {isDarkMode ? <Brightness7Icon /> : <Brightness4Icon />}
+        </button>
       </div>
       <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
         <span />
@@ -42,15 +49,11 @@ function Navbar() {
 }
 
 const Nav = styled.nav`
-  ${'' /* position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 100; */}
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background: rgba(0, 0, 0, 0.7);
+  background: ${({ theme }) => theme.navbarBg};
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 
   .nav-brand {
@@ -71,8 +74,8 @@ const Nav = styled.nav`
     span {
       font-size: 22px;
       font-weight: 700;
-      color: #ffffff;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+      color: ${({ theme }) => theme.navbarText};
+      text-shadow: 0 0 10px ${({ theme }) => theme.mode === 'dark' ? 'rgba(184, 169, 191, 0.5)' : 'rgba(255, 255, 255, 0.8)'};
     }
   }
 
@@ -83,14 +86,14 @@ const Nav = styled.nav`
 
     .link {
       font-size: 16px;
-      color: #ffffff;
+      color: ${({ theme }) => theme.navbarText};
       font-weight: 500;
       text-decoration: none;
       position: relative;
       padding: 5px 0;
 
       &:hover {
-        color: #d0ebff;
+        color: ${({ theme }) => theme.accentPrimary};
       }
 
       &:hover::before {
@@ -103,10 +106,34 @@ const Nav = styled.nav`
         bottom: -5px;
         width: 100%;
         height: 2px;
-        background: linear-gradient(to right, #d0ebff, #1864ab);
+        background: linear-gradient(to right, ${({ theme }) => theme.accentPrimary}, ${({ theme }) => theme.accentSecondary});
         transform: scaleX(0);
         transform-origin: center;
         transition: transform 0.3s ease-in-out;
+      }
+    }
+
+    .theme-toggle {
+      background: transparent;
+      border: 2px solid ${({ theme }) => theme.navbarText};
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: ${({ theme }) => theme.navbarText};
+
+      &:hover {
+        background: ${({ theme }) => theme.accentPrimary};
+        border-color: ${({ theme }) => theme.accentPrimary};
+        transform: rotate(180deg);
+      }
+
+      svg {
+        font-size: 24px;
       }
     }
 
@@ -117,7 +144,7 @@ const Nav = styled.nav`
       position: absolute;
       top: 60px;
       right: 20px;
-      background: rgba(0, 0, 0, 0.8);
+      background: ${({ theme }) => theme.navbarBg};
       padding: 15px 20px;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
@@ -132,13 +159,13 @@ const Nav = styled.nav`
       display: block;
       width: 25px;
       height: 3px;
-      background: #ffffff;
+      background: ${({ theme }) => theme.navbarText};
       margin: 4px 0;
       transition: all 0.3s;
     }
 
     &:hover span {
-      background: #d0ebff;
+      background: ${({ theme }) => theme.accentPrimary};
     }
   }
 

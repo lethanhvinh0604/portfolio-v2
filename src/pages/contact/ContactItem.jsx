@@ -75,29 +75,30 @@ const ContactItemWrapper = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #fff;
+    background-color: ${({ theme }) => theme.bgCard};
     border-radius: 10px;
     backdrop-filter: blur(10px);
-    border: 1px solid #1864ab;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid ${({ theme }) => theme.borderColor};
+    box-shadow: 0 0 10px ${({ theme }) => theme.mode === 'dark' ? 'rgba(0, 0, 0, 0.5)' : 'rgba(0, 0, 0, 0.1)'};
     border-radius: 10px;
     padding: 20px;
     text-decoration: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
     z-index: 1;
 
     &:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 20px ${({ theme }) => theme.mode === 'dark' ? 'rgba(0, 0, 0, 0.7)' : 'rgba(0, 0, 0, 0.2)'};
+      border-color: ${({ theme }) => theme.accentPrimary};
     }
 
     .icon {
       margin-bottom: 10px;
-      color: #0073b1; /* Màu icon mặc định */
+      color: ${({ theme }) => theme.accentPrimary}; /* Màu icon mặc định */
       transition: color 0.3s ease;
 
       &:hover {
-        color: #005582; /* Màu icon khi hover */
+        color: ${({ theme }) => theme.buttonHover}; /* Màu icon khi hover */
       }
 
       svg {
@@ -110,6 +111,7 @@ const ContactItemWrapper = styled.section`
       font-weight: 500;
       text-align: center;
       word-wrap: break-word;
+      color: ${({ theme }) => theme.textPrimary};
     }
   }
 
@@ -120,21 +122,22 @@ const ContactItemWrapper = styled.section`
     p {
       font-size: 16px;
       margin-bottom: 10px;
+      color: ${({ theme }) => theme.textPrimary};
     }
 
     .btn {
       padding: 10px 20px;
       font-size: 16px;
       font-weight: 500;
-      color: #fff;
-      background: #0073b1;
+      color: ${({ theme }) => theme.buttonText};
+      background: ${({ theme }) => theme.buttonBg};
       border: none;
       border-radius: 5px;
       cursor: pointer;
       transition: background 0.3s ease;
 
       &:hover {
-        background: #005582;
+        background: ${({ theme }) => theme.buttonHover};
       }
     }
   }
