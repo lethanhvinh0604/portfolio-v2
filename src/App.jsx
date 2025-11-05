@@ -11,10 +11,12 @@ import Contact from './pages/contact/Contact'
 
 import styled from 'styled-components'
 import Sticky from 'react-sticky-el'
+import GlobalStyles from './GlobalStyles'
 
 function App() {
   return (
     <>
+      <GlobalStyles />
       <ParticleBackground />
       <StickyWrapper>
         <Sticky>

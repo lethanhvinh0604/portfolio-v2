@@ -57,19 +57,21 @@ const CertificateItemWrapper = styled.section`
     flex-direction: column;
     gap: 10px;
     text-decoration: none; /* Xóa gạch chân */
-    background-color: #fff;
+    background-color: ${({ theme }) => theme.bgCard};
     border-radius: 10px;
     backdrop-filter: blur(10px);
-    border: 1px solid #1864ab;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid ${({ theme }) => theme.borderColor};
+    box-shadow: 0 0 10px ${({ theme }) => theme.mode === 'dark' ? 'rgba(0, 0, 0, 0.5)' : 'rgba(0, 0, 0, 0.1)'};
     border-radius: 8px;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease; /* Hiệu ứng hover */
     z-index: 1;
+    color: ${({ theme }) => theme.textPrimary};
 
     &:hover {
       transform: translateY(-5px); /* Đẩy lên trên */
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng */
+      box-shadow: 0 8px 15px ${({ theme }) => theme.mode === 'dark' ? 'rgba(0, 0, 0, 0.7)' : 'rgba(0, 0, 0, 0.2)'}; /* Hiệu ứng bóng */
+      border-color: ${({ theme }) => theme.accentPrimary};
     }
 
     &:hover .project-item__image img {
@@ -86,21 +88,23 @@ const CertificateItemWrapper = styled.section`
       transition: transform 0.3s ease; /* Thêm hiệu ứng zoom */
     }
     padding-bottom: 10px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid ${({ theme }) => theme.borderColor};
   }
 
   .certificate-item__info {
     padding: 10px;
     h3 {
       margin-bottom: 5px;
+      color: ${({ theme }) => theme.textPrimary};
     }
     p {
       margin: 0;
+      color: ${({ theme }) => theme.textSecondary};
     }
 
     .divider {
       margin-top: 10px;
-      border-top: 1px solid #e0e0e0;
+      border-top: 1px solid ${({ theme }) => theme.borderColor};
       padding-top: 10px;
     }
   }

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import profileImage from '../../assets/logoAccount.png'
+import profileImage from '../../assets/haruki.png'
 import KeyBoard from './KeyBoard'
 
 import GitHubIcon from '@mui/icons-material/GitHub'
@@ -175,11 +175,12 @@ const IntroductionWrapper = styled.section`
   justify-content: center;
   text-align: center;
 
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.bgCard};
   border-radius: 10px;
   backdrop-filter: blur(10px);
-  border: 1px solid #1864ab;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid ${({ theme }) => theme.borderColor};
+  box-shadow: 0 0 10px ${({ theme }) => theme.mode === 'dark' ? 'rgba(0, 0, 0, 0.5)' : 'rgba(0, 0, 0, 0.1)'};
+  transition: all 0.3s ease;
 
   .modal {
     position: relative;
@@ -205,9 +206,10 @@ const IntroductionWrapper = styled.section`
     border-radius: 8px;
     padding: 16px;
     text-align: center;
-    color: #fff;
-    background-color: rgba(8, 73, 120, 0.93);
+    color: ${({ theme }) => theme.mode === 'dark' ? theme.textPrimary : '#fff'};
+    background-color: ${({ theme }) => theme.buttonBg};
     backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
     p {
       font-size: 1.5rem;
       font-weight: 400;
@@ -242,7 +244,7 @@ const IntroductionWrapper = styled.section`
       text-align: center;
 
       .img-wrapper {
-        border-color: rgba(255, 255, 255, 0.8);
+        border-color: ${({ theme }) => theme.accentPrimary};
         border-width: 2px;
         border-style: solid;
         width: 100px;
@@ -250,6 +252,7 @@ const IntroductionWrapper = styled.section`
         display: inline-block;
         border-radius: 50%;
         overflow: hidden;
+        transition: border-color 0.3s ease;
         img {
           width: 100%;
           height: 100%;
@@ -332,14 +335,14 @@ const IntroductionWrapper = styled.section`
           padding: 10px 15px;
           border-radius: 8px;
           text-decoration: none;
-          color: var(--primary-color);
+          color: ${({ theme }) => theme.textPrimary};
           font-weight: 400;
           background-color: transparent;
           transition: background-color 0.3s, color 0.3s;
 
           &:hover {
-            background-color: rgba(0, 0, 0, 0.1); /* Đổi màu nền khi hover */
-            color: var(--bold-color);
+            background-color: ${({ theme }) => theme.bgHover};
+            color: ${({ theme }) => theme.textAccent};
           }
         }
       }
