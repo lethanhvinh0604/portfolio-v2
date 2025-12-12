@@ -22,6 +22,9 @@ html {
 
   /* Does NOT work on Safari */
   scroll-behavior: smooth;
+  
+  /* Set default dark background to prevent white flash */
+  background-color: #0f1419;
 }
 
 body {
@@ -29,12 +32,18 @@ body {
   line-height: 1.5;
   font-weight: 400;
   font-size: 1.6rem;
-  color: var(--primary-color);
-  /* background-color: #f9f9f9; */
-  /* background-color: #d0ebff; */
+  color: #f7fafc;
+  /* Set default dark background to prevent white flash */
+  background-color: #0f1419;
 
   /* Only works if there is nothing absolutely positioned in relation to body */
   overflow-x: hidden;
+}
+
+/* Prevent white flash on root element */
+#root {
+  background-color: #0f1419;
+  min-height: 100vh;
 }
 
 a {

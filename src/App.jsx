@@ -3,6 +3,8 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 // import Video from './components/Video'
 import ParticleBackground from './components/ParticleBackground'
+import PageTransition from './components/PageTransition'
+import ProgressBar from './components/ProgressBar'
 
 import Home from './pages/home/Home'
 import Project from './pages/project/Project'
@@ -17,18 +19,21 @@ function App() {
   return (
     <>
       <GlobalStyles />
+      <ProgressBar />
       <ParticleBackground />
       <StickyWrapper>
         <Sticky>
           <Navbar />
         </Sticky>
       </StickyWrapper>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/project" element={<Project />} />
-        <Route path="/certificate" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+      <PageTransition>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/project" element={<Project />} />
+          <Route path="/certificate" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </PageTransition>
       <Footer />
     </>
   )

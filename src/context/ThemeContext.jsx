@@ -13,51 +13,51 @@ export const useTheme = () => {
 
 const lightTheme = {
   mode: 'light',
-  bgPrimary: '#f5f3f1',
-  bgSecondary: '#e8e4eb',
+  bgPrimary: '#f0f4f8',
+  bgSecondary: '#e1e8ed',
   bgCard: '#ffffff',
-  bgHover: '#d4c9d8',
+  bgHover: '#d4e4f0',
 
-  textPrimary: '#2d2d2d',
-  textSecondary: '#5a5460',
-  textAccent: '#7d6b8f',
-  borderColor: '#b8a9bf',
-  accentPrimary: '#9b8fa5',
-  accentSecondary: '#a89bac',
-  buttonBg: '#9b8fa5',
+  textPrimary: '#1a202c',
+  textSecondary: '#4a5568',
+  textAccent: '#2b6cb0',
+  borderColor: '#cbd5e0',
+  accentPrimary: '#3182ce',
+  accentSecondary: '#38b2ac',
+  buttonBg: '#3182ce',
   buttonText: '#ffffff',
-  buttonHover: '#7d6b8f',
-  navbarBg: 'rgba(93, 79, 103, 0.85)',
+  buttonHover: '#2c5282',
+  navbarBg: 'rgba(26, 32, 44, 0.9)',
   navbarText: '#ffffff',
-  particleColor: '#9b8fa5',
-  particleLink: '#b8a9bf'
+  particleColor: '#3182ce',
+  particleLink: '#38b2ac'
 }
 
 const darkTheme = {
   mode: 'dark',
-  bgPrimary: '#1a1620',
-  bgSecondary: '#2a2330',
-  bgCard: '#352d42',
-  bgHover: '#4a3f5c',
-  textPrimary: '#e8e4eb',
-  textSecondary: '#c8c0cf',
-  textAccent: '#b8a9bf',
-  borderColor: '#5d4f67',
-  accentPrimary: '#b8a9bf',
-  accentSecondary: '#9b8fa5',
-  buttonBg: '#7d6b8f',
+  bgPrimary: '#0f1419',
+  bgSecondary: '#1a202c',
+  bgCard: '#2d3748',
+  bgHover: '#3d4757',
+  textPrimary: '#f7fafc',
+  textSecondary: '#e2e8f0',
+  textAccent: '#63b3ed',
+  borderColor: '#4a5568',
+  accentPrimary: '#4299e1',
+  accentSecondary: '#4fd1c5',
+  buttonBg: '#3182ce',
   buttonText: '#ffffff',
-  buttonHover: '#9b8fa5',
-  navbarBg: 'rgba(26, 22, 32, 0.9)',
-  navbarText: '#e8e4eb',
-  particleColor: '#b8a9bf',
-  particleLink: '#7d6b8f'
+  buttonHover: '#4299e1',
+  navbarBg: 'rgba(15, 20, 25, 0.95)',
+  navbarText: '#f7fafc',
+  particleColor: '#4299e1',
+  particleLink: '#4fd1c5'
 }
 
 export const ThemeProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const saved = localStorage.getItem('theme')
-    return saved ? saved === 'dark' : false
+    return saved ? saved === 'dark' : true
   })
 
   useEffect(() => {
