@@ -4,6 +4,16 @@ import AWSLogo from '../assets/newAws.png'
 const CertificateData = [
   {
     Ma: 1,
+    TenChuongChi: 'TOEIC 700 - Listening and Reading Certificate',
+    From: 'IIG Vietnam',
+    NgayCap: '5/2025',
+    CertificateID: 'TOEIC - Lê Thành Vinh',
+    Skill: 'English, Communication',
+    Link: '#',
+    HinhAnh: 'https://www.toeic123.vn/upload/2017/06/15041.jpg'
+  },
+  {
+    Ma: 2,
     TenChuongChi: 'Node.js, Express, MongoDB & More: The Complete Bootcamp',
     From: 'Udemy',
     NgayCap: '11/2024',
@@ -13,7 +23,7 @@ const CertificateData = [
     HinhAnh: UdemyLogo
   },
   {
-    Ma: 2,
+    Ma: 3,
     TenChuongChi: 'AWS Academy Graduate - AWS Academy Cloud Foundations',
     From: 'AWS Academy',
     NgayCap: '10/2023',
@@ -23,7 +33,7 @@ const CertificateData = [
     HinhAnh: AWSLogo
   },
   {
-    Ma: 3,
+    Ma: 4,
     TenChuongChi: 'Build Responsive Real-World Websites with HTML and CSS',
     From: 'Udemy',
     NgayCap: '9/2024',
@@ -33,7 +43,7 @@ const CertificateData = [
     HinhAnh: UdemyLogo
   },
   {
-    Ma: 4,
+    Ma: 5,
     TenChuongChi: 'Crash Course: Build a Full-Stack Web App in a Weekend!',
     From: 'Udemy',
     NgayCap: '4/2024',

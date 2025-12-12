@@ -12,9 +12,9 @@ function ContactItem() {
       label: 'Lê Thành Vinh'
     },
     {
-      href: 'https://github.com/Suzukisakae',
+      href: 'https://github.com/lethanhvinh0604',
       icon: <GitHubIcon sx={{ fontSize: 40 }} />,
-      label: 'Suzukisakae'
+      label: 'lethanhvinh0604'
     },
     {
       href: 'mailto:lethanhvinhspk@gmail.com',

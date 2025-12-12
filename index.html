@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark light" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,6 +13,31 @@
     />
     <link rel="icon" type="image/png" href="/src/assets/haruki.ico" />
     <title>My Portfolio</title>
+    <style>
+      /* Prevent white flash before React loads */
+      html, body, #root {
+        background-color: #0f1419;
+        color: #f7fafc;
+        margin: 0;
+        padding: 0;
+        transition: none !important;
+      }
+      
+      /* Light theme fallback if needed */
+      html.light-theme, html.light-theme body, html.light-theme #root {
+        background-color: #f0f4f8;
+        color: #1a202c;
+      }
+    </style>
+    <script>
+      // Set theme immediately before React loads to prevent flash
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'light') {
+          document.documentElement.classList.add('light-theme');
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

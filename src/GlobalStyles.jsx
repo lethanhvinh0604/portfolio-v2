@@ -19,9 +19,15 @@ const GlobalStyles = createGlobalStyle`
     font-weight: 400;
     font-size: 1.6rem;
     color: ${({ theme }) => theme.textPrimary};
-    background-color: ${({ theme }) => theme.bgPrimary};
+    background-color: ${({ theme }) => theme.bgPrimary} !important;
     overflow-x: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
+    min-height: 100vh;
+  }
+
+  #root {
+    background-color: ${({ theme }) => theme.bgPrimary};
+    min-height: 100vh;
   }
 
   a {
