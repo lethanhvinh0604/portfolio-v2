@@ -181,24 +181,39 @@ function Introduction() {
 
 const ThreeDScene = styled.div`
   width: 100%;
+  margin-top: 4px;
+
   .modal {
     position: relative;
     ${'' /* position: absolute; */}
-    width: 100%;
+    width: min(100% - 3.2rem, 1040px);
     height: 400px; /* Đặt chiều cao tùy ý */
     margin: 0 auto; /* Căn giữa theo chiều ngang */
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+    height: 360px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid ${({ theme }) => theme.borderColor};
+    background:
+      radial-gradient(circle at 50% 20%, ${({ theme }) => theme.accentPrimary}18, transparent 34rem),
+      linear-gradient(180deg, ${({ theme }) => theme.bgCard}, transparent);
+    box-shadow: ${({ theme }) => theme.mode === 'dark'
+    ? '0 24px 70px rgba(0, 0, 0, 0.28)'
+    : '0 20px 55px rgba(24, 59, 86, 0.12)'};
     ${'' /* background-color: rgba(0, 0, 0, 0.1); */}
     border-radius: 10px; /* Làm tròn góc (nếu cần) */
     overflow: hidden; /* Đảm bảo canvas không vượt ra ngoài div */
 
     @media (max-width: 768px) {
-      width: 90%;
-      height: 300px;
+      width: min(100% - 2.4rem, 1040px);
+      height: 260px;
+      border-radius: 18px;
     }
+  }
+
+  && .modal {
+    border-radius: 22px;
   }
 `
 
@@ -268,7 +283,7 @@ const IntroductionWrapper = styled.section`
         font-size: 3.2rem;
         font-weight: 700;
         margin-bottom: 12px;
-        letter-spacing: -0.5px;
+        letter-spacing: 0;
       }
 
       p {
@@ -401,7 +416,7 @@ const IntroductionWrapper = styled.section`
             font-size: 1.7rem;
             color: ${({ theme }) => theme.accentPrimary};
             margin-bottom: 10px;
-            letter-spacing: 0.3px;
+            letter-spacing: 0;
           }
           
           p {
@@ -502,6 +517,268 @@ const IntroductionWrapper = styled.section`
           }
         }
       }
+    }
+  }
+
+  && {
+    position: relative;
+    padding: 30px;
+    gap: 26px;
+    text-align: left;
+    overflow: hidden;
+    border-radius: 24px;
+    background:
+      linear-gradient(180deg, ${({ theme }) => theme.bgCard}, ${({ theme }) => theme.bgCard}),
+      radial-gradient(circle at 8% 0%, ${({ theme }) => theme.accentPrimary}24, transparent 28rem);
+    backdrop-filter: blur(18px) saturate(135%);
+    -webkit-backdrop-filter: blur(18px) saturate(135%);
+    box-shadow: ${({ theme }) => theme.mode === 'dark'
+    ? '0 24px 80px rgba(0, 0, 0, 0.32)'
+    : '0 22px 60px rgba(24, 59, 86, 0.14)'};
+    transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  &&::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, ${({ theme }) => theme.accentPrimary}14, transparent);
+    opacity: 0.55;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent 46%);
+  }
+
+  && > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  && .title {
+    border-radius: 18px;
+    padding: 18px 20px;
+    text-align: left;
+    color: ${({ theme }) => theme.textPrimary};
+    background: ${({ theme }) => theme.mode === 'dark'
+    ? 'rgba(74, 199, 230, 0.08)'
+    : 'rgba(22, 135, 199, 0.08)'};
+    border: 1px solid ${({ theme }) => theme.borderColor};
+    box-shadow: none;
+  }
+
+  && .title p {
+    font-size: 1.58rem;
+    font-weight: 600;
+    line-height: 1.65;
+    color: ${({ theme }) => theme.textPrimary};
+  }
+
+  && .intro {
+    width: 100%;
+    justify-content: space-between;
+    gap: 28px;
+  }
+
+  && .intro .intro-heading h2 {
+    font-size: clamp(3.2rem, 5vw, 5.4rem);
+    font-weight: 800;
+    margin-bottom: 14px;
+    line-height: 1.04;
+    letter-spacing: 0;
+    color: ${({ theme }) => theme.textPrimary};
+  }
+
+  && .intro .intro-heading p {
+    max-width: 66rem;
+    font-size: 1.62rem;
+    line-height: 1.78;
+    color: ${({ theme }) => theme.textSecondary};
+  }
+
+  && .intro .intro-img .img-wrapper {
+    width: 118px;
+    height: 118px;
+    border: 1px solid ${({ theme }) => theme.borderColor};
+    border-radius: 22px;
+    background: ${({ theme }) => theme.bgHover};
+    box-shadow: ${({ theme }) => theme.mode === 'dark'
+    ? '0 18px 45px rgba(0, 0, 0, 0.28)'
+    : '0 14px 34px rgba(24, 59, 86, 0.14)'};
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  && .intro .intro-img .img-wrapper:hover {
+    border-color: ${({ theme }) => theme.accentPrimary};
+    transform: translateY(-2px);
+  }
+
+  && .genneral,
+  && .love,
+  && .bio,
+  && .contact {
+    width: 100%;
+    text-align: start;
+  }
+
+  && .genneral h2,
+  && .love h2,
+  && .bio h2,
+  && .contact h2 {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 2.35rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 14px;
+    color: ${({ theme }) => theme.textPrimary};
+  }
+
+  && .genneral h2::before,
+  && .love h2::before,
+  && .bio h2::before,
+  && .contact h2::before {
+    content: '';
+    width: 28px;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, ${({ theme }) => theme.accentPrimary}, ${({ theme }) => theme.accentSecondary});
+  }
+
+  && .genneral p,
+  && .love p {
+    font-size: 1.58rem;
+    line-height: 1.82;
+    color: ${({ theme }) => theme.textSecondary};
+  }
+
+  && .bio h2 {
+    margin-bottom: 24px;
+  }
+
+  && .bio .timeline {
+    padding-left: 28px;
+  }
+
+  && .bio .timeline::before {
+    left: 6px;
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      ${({ theme }) => theme.accentPrimary},
+      ${({ theme }) => theme.accentSecondary || theme.accentPrimary},
+      transparent
+    );
+    opacity: 0.62;
+  }
+
+  && .bio .timeline .timeline-item {
+    padding-bottom: 18px;
+  }
+
+  && .bio .timeline .timeline-item .timeline-dot {
+    left: -28px;
+    top: 20px;
+    width: 13px;
+    height: 13px;
+    border: 3px solid ${({ theme }) => theme.bgSecondary};
+    box-shadow: 0 0 0 5px ${({ theme }) => theme.accentPrimary}18;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  && .bio .timeline .timeline-item:hover .timeline-dot {
+    transform: scale(1.12);
+    box-shadow: 0 0 0 7px ${({ theme }) => theme.accentPrimary}18;
+  }
+
+  && .bio .timeline .timeline-item .timeline-content {
+    padding: 16px 18px;
+    background: ${({ theme }) => theme.mode === 'dark'
+    ? 'rgba(255, 255, 255, 0.035)'
+    : 'rgba(255, 255, 255, 0.64)'};
+    border-radius: 16px;
+    border: 1px solid ${({ theme }) => theme.borderColor};
+    border-left: 1px solid ${({ theme }) => theme.borderColor};
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+
+  && .bio .timeline .timeline-item .timeline-content:hover {
+    background: ${({ theme }) => theme.mode === 'dark'
+    ? 'rgba(74, 199, 230, 0.06)'
+    : 'rgba(255, 255, 255, 0.86)'};
+    border-color: ${({ theme }) => theme.accentPrimary}66;
+    transform: translateY(-2px);
+  }
+
+  && .bio .timeline .timeline-item .timeline-content .bio-year {
+    font-size: 1.34rem;
+    margin-bottom: 8px;
+    letter-spacing: 0;
+  }
+
+  && .bio .timeline .timeline-item .timeline-content p {
+    font-size: 1.48rem;
+    line-height: 1.74;
+    color: ${({ theme }) => theme.textSecondary};
+  }
+
+  && .contact .social-links li a {
+    gap: 14px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    color: ${({ theme }) => theme.textPrimary};
+    font-weight: 600;
+    font-size: 1.48rem;
+    background: ${({ theme }) => theme.mode === 'dark'
+    ? 'rgba(255, 255, 255, 0.03)'
+    : 'rgba(255, 255, 255, 0.58)'};
+    border: 1px solid ${({ theme }) => theme.borderColor};
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+
+  && .contact .social-links li a svg {
+    color: ${({ theme }) => theme.accentPrimary};
+    font-size: 2.8rem !important;
+  }
+
+  && .contact .social-links li a:hover {
+    background: ${({ theme }) => theme.bgHover};
+    color: ${({ theme }) => theme.accentPrimary};
+    border-color: ${({ theme }) => theme.accentPrimary}66;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    && {
+      padding: 22px;
+      gap: 22px;
+      border-radius: 20px;
+    }
+
+    && .title {
+      padding: 16px;
+    }
+
+    && .intro {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    && .intro .intro-img {
+      margin-top: 0;
+    }
+
+    && .genneral h2,
+    && .love h2,
+    && .bio h2,
+    && .contact h2 {
+      font-size: 2.1rem;
+    }
+
+    && .genneral p,
+    && .love p {
+      font-size: 1.5rem;
     }
   }
 `

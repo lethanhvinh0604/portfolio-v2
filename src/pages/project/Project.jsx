@@ -19,17 +19,23 @@ function Project() {
 const fadeIn = keyframes`
   from {
     opacity: 0;
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 `
 
 const ProjectWrapper = styled.main`
-  animation: ${fadeIn} 1s ease-in-out;
-  padding: 20px;
+  animation: ${fadeIn} 0.55s ease-out;
+  padding: 34px 20px 44px;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    padding: 24px 12px 34px;
+  }
 `
 
 export default Project

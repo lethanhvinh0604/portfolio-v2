@@ -141,6 +141,128 @@ const ContactItemWrapper = styled.section`
       }
     }
   }
+
+  && .title {
+    margin-bottom: 24px;
+  }
+
+  && .title h2 {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 2.55rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: ${({ theme }) => theme.textPrimary};
+  }
+
+  && .title h2::before {
+    content: '';
+    width: 30px;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, ${({ theme }) => theme.accentPrimary}, ${({ theme }) => theme.accentSecondary});
+  }
+
+  && .contact-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+  }
+
+  && .contact-card {
+    min-height: 148px;
+    justify-content: center;
+    gap: 12px;
+    padding: 22px 18px;
+    border-radius: 20px;
+    background:
+      linear-gradient(180deg, ${({ theme }) => theme.bgCard}, ${({ theme }) => theme.bgCard}),
+      radial-gradient(circle at 20% 0%, ${({ theme }) => theme.accentPrimary}1f, transparent 20rem);
+    border: 1px solid ${({ theme }) => theme.borderColor};
+    box-shadow: ${({ theme }) => theme.mode === 'dark'
+    ? '0 18px 55px rgba(0, 0, 0, 0.24)'
+    : '0 16px 38px rgba(24, 59, 86, 0.12)'};
+    backdrop-filter: blur(16px) saturate(130%);
+    -webkit-backdrop-filter: blur(16px) saturate(130%);
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+  }
+
+  && .contact-card:hover {
+    transform: translateY(-4px);
+    border-color: ${({ theme }) => theme.accentPrimary}66;
+    box-shadow: ${({ theme }) => theme.mode === 'dark'
+    ? '0 24px 70px rgba(0, 0, 0, 0.32)'
+    : '0 22px 50px rgba(24, 59, 86, 0.18)'};
+  }
+
+  && .contact-card .icon {
+    width: 54px;
+    height: 54px;
+    margin-bottom: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 16px;
+    color: ${({ theme }) => theme.accentPrimary};
+    background: ${({ theme }) => theme.bgHover};
+    border: 1px solid ${({ theme }) => theme.borderColor};
+  }
+
+  && .contact-card .icon svg {
+    font-size: 3rem !important;
+  }
+
+  && .contact-card .label {
+    max-width: 100%;
+    font-size: 1.48rem;
+    font-weight: 650;
+    line-height: 1.45;
+    color: ${({ theme }) => theme.textPrimary};
+    overflow-wrap: anywhere;
+  }
+
+  && .contact-resume {
+    margin-top: 26px;
+    padding: 22px;
+    border: 1px solid ${({ theme }) => theme.borderColor};
+    border-radius: 20px;
+    background: ${({ theme }) => theme.mode === 'dark'
+    ? 'rgba(255, 255, 255, 0.035)'
+    : 'rgba(255, 255, 255, 0.62)'};
+    backdrop-filter: blur(14px);
+  }
+
+  && .contact-resume p {
+    margin-bottom: 14px;
+    font-size: 1.5rem;
+    line-height: 1.7;
+    color: ${({ theme }) => theme.textSecondary};
+  }
+
+  && .contact-resume .btn {
+    padding: 11px 18px;
+    border-radius: 999px;
+    border: 1px solid ${({ theme }) => theme.accentPrimary}66;
+    background: linear-gradient(135deg, ${({ theme }) => theme.buttonBg}, ${({ theme }) => theme.accentSecondary});
+    box-shadow: 0 10px 26px ${({ theme }) => theme.accentPrimary}24;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  }
+
+  && .contact-resume .btn:hover {
+    transform: translateY(-2px);
+    filter: saturate(1.08);
+    box-shadow: 0 14px 32px ${({ theme }) => theme.accentPrimary}2e;
+  }
+
+  @media (max-width: 768px) {
+    && .title h2 {
+      font-size: 2.2rem;
+    }
+
+    && .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 `
 
 export default ContactItem
