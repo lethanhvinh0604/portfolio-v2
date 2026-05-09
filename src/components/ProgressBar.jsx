@@ -52,8 +52,8 @@ const ProgressBarWrapper = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 3px;
-  background-color: ${({ theme }) => theme.borderColor};
+  height: 2px;
+  background-color: transparent;
   z-index: 10000;
   overflow: hidden;
 `
@@ -66,7 +66,7 @@ const ProgressBarFill = styled.div`
     ${({ theme }) => theme.accentSecondary}
   );
   transition: width 0.3s ease;
-  box-shadow: 0 0 10px ${({ theme }) => theme.accentPrimary};
+  box-shadow: 0 0 14px ${({ theme }) => theme.accentPrimary}66;
 `
 
 export default ProgressBar

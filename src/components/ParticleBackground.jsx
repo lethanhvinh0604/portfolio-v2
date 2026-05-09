@@ -23,37 +23,38 @@ export default function ParticleBackground() {
           id="tsparticles"
           particlesLoaded={particlesLoaded}
           style={{
-            zIndex: -1
+            zIndex: -1,
+            opacity: theme.mode === 'dark' ? 0.42 : 0.28
           }}
           options={{
-            fpsLimit: 120,
+            fpsLimit: 60,
             interactivity: {
               events: {
                 onClick: {
-                  enable: true,
+                  enable: false,
                   mode: 'push'
                 },
                 onHover: {
                   enable: true,
-                  mode: ['grab', 'bubble']
+                  mode: ['grab']
                 },
                 resize: true
               },
               modes: {
                 push: {
-                  quantity: 6
+                  quantity: 2
                 },
                 grab: {
-                  distance: 200,
+                  distance: 150,
                   links: {
-                    opacity: 0.8
+                    opacity: 0.22
                   }
                 },
                 bubble: {
                   distance: 250,
-                  size: 8,
+                  size: 4,
                   duration: 2,
-                  opacity: 0.8
+                  opacity: 0.35
                 },
                 repulse: {
                   distance: 200,
@@ -67,23 +68,23 @@ export default function ParticleBackground() {
               },
               links: {
                 color: theme.particleLink,
-                distance: 180,
+                distance: 165,
                 enable: true,
-                opacity: 0.6,
-                width: 1.5,
+                opacity: 0.14,
+                width: 1,
                 triangles: {
-                  enable: true,
-                  opacity: 0.05
+                  enable: false,
+                  opacity: 0
                 }
               },
               move: {
                 direction: 'none',
                 enable: true,
                 outModes: {
-                  default: 'bounce'
+                  default: 'out'
                 },
                 random: true,
-                speed: 2,
+                speed: 0.45,
                 straight: false,
                 attract: {
                   enable: true,
@@ -94,17 +95,17 @@ export default function ParticleBackground() {
               number: {
                 density: {
                   enable: true,
-                  area: 800
+                  area: 1000
                 },
-                value: 100
+                value: 42
               },
               opacity: {
-                value: 0.6,
+                value: 0.26,
                 random: true,
                 anim: {
                   enable: true,
-                  speed: 1,
-                  opacity_min: 0.2,
+                  speed: 0.45,
+                  opacity_min: 0.06,
                   sync: false
                 }
               },
@@ -112,12 +113,12 @@ export default function ParticleBackground() {
                 type: 'circle'
               },
               size: {
-                value: { min: 1, max: 4 },
+                value: { min: 0.6, max: 2.2 },
                 random: true,
                 anim: {
                   enable: true,
-                  speed: 2,
-                  size_min: 0.3,
+                  speed: 0.7,
+                  size_min: 0.2,
                   sync: false
                 }
               }

@@ -64,7 +64,7 @@ const LoaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 25px;
+  gap: 18px;
 `
 
 const SpinnerGroup = styled.div`
@@ -77,12 +77,12 @@ const Spinner = styled.div`
   position: absolute;
   width: 70px;
   height: 70px;
-  border: 4px solid ${({ theme }) => theme.borderColor}40;
-  border-top: 4px solid ${({ theme }) => theme.accentPrimary};
-  border-right: 4px solid ${({ theme }) => theme.accentSecondary};
+  border: 2px solid ${({ theme }) => theme.borderColor};
+  border-top: 2px solid ${({ theme }) => theme.accentPrimary};
+  border-right: 2px solid ${({ theme }) => theme.accentSecondary};
   border-radius: 50%;
-  animation: ${spin} 1s linear infinite;
-  box-shadow: 0 0 25px ${({ theme }) => theme.accentPrimary}50;
+  animation: ${spin} 1.1s linear infinite;
+  box-shadow: 0 0 28px ${({ theme }) => theme.accentPrimary}1f;
 `
 
 const SpinnerInner = styled.div`
@@ -92,10 +92,10 @@ const SpinnerInner = styled.div`
   width: 54px;
   height: 54px;
   border: 3px solid transparent;
-  border-bottom: 3px solid ${({ theme }) => theme.accentSecondary};
-  border-left: 3px solid ${({ theme }) => theme.accentPrimary};
+  border-bottom: 2px solid ${({ theme }) => theme.accentSecondary};
+  border-left: 2px solid ${({ theme }) => theme.accentPrimary};
   border-radius: 50%;
-  animation: ${spin} 0.7s linear infinite reverse;
+  animation: ${spin} 0.9s linear infinite reverse;
 `
 
 const LoadingText = styled.p`
@@ -103,7 +103,7 @@ const LoadingText = styled.p`
   font-size: 1.3rem;
   font-weight: 600;
   animation: ${pulse} 1.5s ease-in-out infinite;
-  letter-spacing: 2px;
+  letter-spacing: 0;
   text-transform: uppercase;
   background: linear-gradient(
     90deg,
@@ -119,12 +119,10 @@ const LoadingText = styled.p`
 
 const bounce = keyframes`
   0%, 80%, 100% {
-    transform: scale(0.8);
-    opacity: 0.5;
+    opacity: 0.35;
   }
   40% {
-    transform: scale(1.2);
-    opacity: 1;
+    opacity: 0.9;
   }
 `
 
@@ -134,13 +132,13 @@ const DotsContainer = styled.div`
 `
 
 const Dot = styled.div`
-  width: 12px;
-  height: 12px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: ${({ theme }) => theme.accentPrimary};
   animation: ${bounce} 1.4s infinite ease-in-out;
   animation-delay: ${({ delay }) => delay};
-  box-shadow: 0 0 10px ${({ theme }) => theme.accentPrimary};
+  box-shadow: 0 0 10px ${({ theme }) => theme.accentPrimary}66;
 `
 
 export default PageLoader

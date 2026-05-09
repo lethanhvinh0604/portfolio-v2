@@ -48,7 +48,7 @@ function PageTransition({ children }) {
 const fadeIn = keyframes`
   from {
     opacity: 0;
-    transform: translateY(15px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -76,9 +76,9 @@ const LoaderContainer = styled.div`
 `
 
 const PageWrapper = styled.div`
-  animation: ${fadeIn} 0.5s ease-out;
+  animation: ${fadeIn} 0.45s ease-out;
   min-height: 100vh;
-  background-color: ${({ theme }) => theme.bgPrimary};
+  background-color: transparent;
 `
 
 export default PageTransition

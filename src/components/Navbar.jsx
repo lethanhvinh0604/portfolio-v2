@@ -52,9 +52,19 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  width: min(100% - 3.2rem, 1040px);
+  min-height: 68px;
+  margin: 14px auto 0;
+  padding: 10px 16px;
   background: ${({ theme }) => theme.navbarBg};
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border: 1px solid ${({ theme }) => theme.borderColor};
+  border-radius: 18px;
+  box-shadow: ${({ theme }) => theme.mode === 'dark'
+    ? '0 18px 50px rgba(0, 0, 0, 0.26)'
+    : '0 18px 45px rgba(24, 59, 86, 0.12)'};
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 
   .nav-brand {
     display: flex;
@@ -64,112 +74,181 @@ const Nav = styled.nav`
       display: flex;
       align-items: center;
       text-decoration: none;
+      gap: 12px;
     }
 
     img {
-      width: 50px;
-      margin-right: 20px;
+      width: 42px;
+      height: 42px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid ${({ theme }) => theme.borderColor};
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
     }
 
     span {
-      font-size: 22px;
+      font-size: 1.55rem;
       font-weight: 700;
       color: ${({ theme }) => theme.navbarText};
-      text-shadow: 0 0 10px ${({ theme }) => theme.mode === 'dark' ? 'rgba(184, 169, 191, 0.5)' : 'rgba(255, 255, 255, 0.8)'};
+      letter-spacing: 0;
+      white-space: nowrap;
     }
   }
 
   .nav-links {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 8px;
 
     .link {
-      font-size: 16px;
+      font-size: 1.42rem;
       color: ${({ theme }) => theme.navbarText};
-      font-weight: 500;
+      font-weight: 600;
       text-decoration: none;
       position: relative;
-      padding: 5px 0;
+      padding: 9px 12px;
+      border-radius: 999px;
+      opacity: 0.78;
 
       &:hover {
         color: ${({ theme }) => theme.accentPrimary};
+        background: ${({ theme }) => theme.bgHover};
+        opacity: 1;
       }
 
-      &:hover::before {
-        transform: scaleX(1);
+      &:focus-visible {
+        outline: 2px solid ${({ theme }) => theme.accentPrimary};
+        outline-offset: 3px;
       }
 
       &::before {
         content: '';
         position: absolute;
-        bottom: -5px;
-        width: 100%;
-        height: 2px;
-        background: linear-gradient(to right, ${({ theme }) => theme.accentPrimary}, ${({ theme }) => theme.accentSecondary});
-        transform: scaleX(0);
-        transform-origin: center;
-        transition: transform 0.3s ease-in-out;
+        left: 50%;
+        bottom: 4px;
+        width: 16px;
+        height: 1px;
+        background: ${({ theme }) => theme.accentPrimary};
+        opacity: 0;
+        transform: translateX(-50%) scaleX(0.45);
+        transition: opacity 0.2s ease, transform 0.2s ease;
+      }
+
+      &:hover::before {
+        opacity: 0.75;
+        transform: translateX(-50%) scaleX(1);
       }
     }
 
     .theme-toggle {
-      background: transparent;
-      border: 2px solid ${({ theme }) => theme.navbarText};
+      background: ${({ theme }) => theme.bgHover};
+      border: 1px solid ${({ theme }) => theme.borderColor};
       border-radius: 50%;
-      width: 40px;
-      height: 40px;
+      width: 38px;
+      height: 38px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
       color: ${({ theme }) => theme.navbarText};
+      margin-left: 6px;
 
       &:hover {
-        background: ${({ theme }) => theme.accentPrimary};
+        background: ${({ theme }) => theme.accentPrimary}1f;
         border-color: ${({ theme }) => theme.accentPrimary};
-        transform: rotate(180deg);
+        color: ${({ theme }) => theme.accentPrimary};
+        transform: translateY(-1px);
+      }
+
+      &:focus-visible {
+        outline: 2px solid ${({ theme }) => theme.accentPrimary};
+        outline-offset: 3px;
       }
 
       svg {
-        font-size: 24px;
+        font-size: 2rem;
       }
     }
 
     &.open {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      align-items: stretch;
+      gap: 8px;
       position: absolute;
-      top: 60px;
-      right: 20px;
+      top: calc(100% + 10px);
+      right: 0;
+      min-width: 220px;
       background: ${({ theme }) => theme.navbarBg};
-      padding: 15px 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      padding: 12px;
+      border: 1px solid ${({ theme }) => theme.borderColor};
+      border-radius: 16px;
+      box-shadow: ${({ theme }) => theme.mode === 'dark'
+    ? '0 22px 60px rgba(0, 0, 0, 0.36)'
+    : '0 18px 45px rgba(24, 59, 86, 0.16)'};
+      backdrop-filter: blur(18px);
+
+      .link {
+        width: 100%;
+      }
+
+      .theme-toggle {
+        margin: 4px 0 0;
+      }
     }
   }
 
   .menu-toggle {
     display: none;
     cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border: 1px solid ${({ theme }) => theme.borderColor};
+    border-radius: 12px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    background: ${({ theme }) => theme.bgHover};
+    transition: border-color 0.2s ease, background 0.2s ease;
 
     span {
       display: block;
-      width: 25px;
-      height: 3px;
+      width: 18px;
+      height: 2px;
       background: ${({ theme }) => theme.navbarText};
-      margin: 4px 0;
-      transition: all 0.3s;
+      margin: 0;
+      border-radius: 999px;
+      transition: background 0.2s ease, transform 0.2s ease;
     }
 
-    &:hover span {
-      background: ${({ theme }) => theme.accentPrimary};
+    &:hover {
+      border-color: ${({ theme }) => theme.accentPrimary};
+
+      span {
+        background: ${({ theme }) => theme.accentPrimary};
+      }
     }
   }
 
   @media (max-width: 768px) {
+    width: min(100% - 2.4rem, 1040px);
+    min-height: 62px;
+    margin-top: 10px;
+    position: relative;
+
+    .nav-brand {
+      span {
+        font-size: 1.42rem;
+      }
+
+      img {
+        width: 38px;
+        height: 38px;
+      }
+    }
+
     .nav-links {
       display: none;
     }
@@ -179,7 +258,7 @@ const Nav = styled.nav`
     }
 
     .menu-toggle {
-      display: block;
+      display: flex;
     }
   }
 `
